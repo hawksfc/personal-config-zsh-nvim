@@ -25,7 +25,7 @@ set smartcase
 call plug#begin('~/.vim/plugged')
 
 "Sintax
-Plug 'sheerum/vim-polyglot'
+Plug 'sheerun/vim-polyglot'
 
 "StatusBar
 Plug 'maximbaz/lightline-ale'
@@ -50,16 +50,16 @@ Plug 'benmills/vimux'
 Plug 'christoomey/vim-tmux-navigator'
 
 "Autocomple
-Plug 'sierver/ultisnips'
+Plug 'sirver/ultisnips'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "IDE
 Plug 'easymotion/vim-easymotion'
-Plug 'editor-config/editorconfig-vim'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'mhinz/vim-signify'
-Plug 'yggdroot/identline'
+Plug 'yggdroot/indentline'
 Plug 'scrooloose/nerdcommenter'
 
 "Git
@@ -73,16 +73,28 @@ call plug#end()
 colorscheme gruvbox
 let g:gruvbox_contrast_dark = "hard"
 "autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
-let g:airline_powerline_fonts = 1
-let g:airline#extesions#tabline#enabled = 1
+"let g:airline_powerline_fonts = 1
+"let g:airline#extesions#tabline#enabled = 1
+
 "IDE config
 let mapleader=" "
+
 "Splite resize
 nnoremap <Leader>< 10<C-w><
 nnoremap <Leader>> 10<C-w>>
 
 "Quick semi
-nnoremap <Leader>; $a;<Esc
+nnoremap <Leader>; $a;<Esc>
+
+"Shorter command
+cnoreabbrev tree NERDTreeToggle
+cnoreabbrev blame Gblame
+cnoreabbrev find NERDTreeFind
+cnoreabbrev diff Gdiff
+
+"Plugs
+"Kite Autocomplete
+let g:kite_support_languages = ['*']
 
 "easymotion
 map <Leader>s <Plug>(easymotion-s2)
@@ -111,3 +123,18 @@ map <Leader>l :tabnext<cr>
 "Buffer
 map <Leader>ob :Buffers<cr>
 
+"Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-reference)
+
+"Faster scrolling
+nnoremap <C-j> 10<C-e>
+nnoremap <C-k> 10<C-y>
+
+if &filetype == "javascript" || &filetype == "python"
+	inoremap <c-space> <C-x><C-u>
+else
+	inoremap <silent><expr> <c-space> coc#refressh()
+endif
