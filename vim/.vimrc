@@ -52,6 +52,7 @@ Plug 'christoomey/vim-tmux-navigator'
 "Autocomple
 Plug 'sirver/ultisnips'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'mattn/emmet-vim'
 
 "IDE
 Plug 'easymotion/vim-easymotion'
@@ -95,6 +96,7 @@ cnoreabbrev diff Gdiff
 "Plugs
 "Kite Autocomplete
 let g:kite_support_languages = ['*']
+nmap <Leader>, <c-y>,
 
 "easymotion
 map <Leader>s <Plug>(easymotion-s2)
