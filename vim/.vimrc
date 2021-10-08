@@ -25,16 +25,15 @@ set smartcase
 call plug#begin('~/.vim/plugged')
 
 "Sintax
+Plug 'sheerun/vimrc'
 Plug 'sheerun/vim-polyglot'
 
 "StatusBar
-Plug 'maximbaz/lightline-ale'
-Plug 'itchyny/lightline.vim'
-"Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 "Theme
 Plug 'morhetz/gruvbox'
-Plug 'shinchu/lightline-gruvbox.vim'
 Plug 'ryanoasis/vim-devicons'
 
 "Tree
@@ -73,9 +72,10 @@ call plug#end()
 "Theme config
 colorscheme gruvbox
 let g:gruvbox_contrast_dark = "hard"
-"autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
-"let g:airline_powerline_fonts = 1
-"let g:airline#extesions#tabline#enabled = 1
+autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
+let g:airline_powerline_fonts = 1
+let g:airline#extesions#tabline#enabled = 1
+let g:airline_theme = "base16_gruvbox_dark_hard"
 
 "IDE config
 let mapleader=" "
@@ -103,11 +103,18 @@ map <Leader>s <Plug>(easymotion-s2)
 "nerdtree
 let NERDTreeQuitOnOpen=1
 map <Leader>nt :NERDTreeFind<CR>
+let NERDTreeMapOpenInTab = '<Enter>'
 "shorcuts
 nmap <Leader>w :w<CR>
 nmap <Leader>q :q<CR>
 nmap <Leader><left> :tabn<CR>
 nmap <Leader><right> :tabp<CR>
+
+nmap <Leader>[ ysiw[<CR>
+nmap <Leader>( ysiw(<CR>
+nmap <Leader>{ ysiw{<CR>
+nmap <Leader>' ysiw'<CR>
+nmap <Leader>" yisw"<CR>
 
 map <Leader>p :Files<CR>
 map <Leader>ag :Ag<CR>
@@ -119,8 +126,8 @@ map <silent> <Leader><C-k> :TmuxNavigateUp<CR>
 map <silent> <Leader><C-l> :TmuxNavigateRight<CR>
 
 "Tabs navigation
-map <Leader>h :tabprevious<cr>
-map <Leader>l :tabnext<cr>
+map <Leader>h :bprevious<cr>
+map <Leader>l :bnext<cr>
 
 "Buffer
 map <Leader>ob :Buffers<cr>
@@ -132,8 +139,8 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-reference)
 
 "Faster scrolling
-nnoremap <C-j> 10<C-e>
-nnoremap <C-k> 10<C-y>
+nnoremap <C-j> 10 <C-e>
+nnoremap <C-k> 10 <C-y>
 
 if &filetype == "javascript" || &filetype == "python"
 	inoremap <c-space> <C-x><C-u>
