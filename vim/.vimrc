@@ -1,4 +1,4 @@
-set number
+set  number
 set mouse=a
 set numberwidth=1
 set clipboard=unnamed
@@ -31,6 +31,8 @@ Plug 'sheerun/vim-polyglot'
 "StatusBar
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'enricobacis/vim-airline-clock'
+Plug 'ffanzhang/vim-airline-stopwatch'
 
 "Theme
 Plug 'morhetz/gruvbox'
@@ -50,7 +52,8 @@ Plug 'christoomey/vim-tmux-navigator'
 
 "Autocomple
 Plug 'sirver/ultisnips'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'Valloric/YouCompleteMe'
 Plug 'mattn/emmet-vim'
 
 "IDE
@@ -74,8 +77,10 @@ colorscheme gruvbox
 let g:gruvbox_contrast_dark = "hard"
 autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
 let g:airline_powerline_fonts = 1
-let g:airline#extesions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme = "base16_gruvbox_dark_hard"
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_ngdoc = 1
 
 "IDE config
 let mapleader=" "
@@ -142,8 +147,13 @@ nmap <silent> gr <Plug>(coc-reference)
 nnoremap <C-j> 10 <C-e>
 nnoremap <C-k> 10 <C-y>
 
-if &filetype == "javascript" || &filetype == "python"
-	inoremap <c-space> <C-x><C-u>
-else
-	inoremap <silent><expr> <c-space> coc#refressh()
-endif
+"Stopwatch
+nmap <Leader>r :call airline#extensions#stopwatch#run()<CR> 
+nmap <Leader>t :call airline#extensions#stopwatch#stop()<CR> 
+nmap <Leader>/ :call airline#extensions#stopwatch#reset()<CR> 
+
+"if &filetype == javascript || &filetype == python
+	"inoremap <c-space> <C-x><C-u>
+"else
+	"inoremap <silent><expr> <c-space> coc#refressh()
+"endif
